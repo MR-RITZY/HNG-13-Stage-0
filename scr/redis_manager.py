@@ -6,7 +6,7 @@ from scr.log import error_logger, info_logger
 
 redis_url = (
     f"redis://{settings.REDIS_USERNAME}:{settings.REDIS_PASSWORD}@"
-    f"{settings.REDIS_HOST}:{settings.REDIS_PORT}/{settings.REDIS_DB}"
+    f"{settings.REDIS_HOST}:{settings.REDIS_PORT}"
 )
 
 pool = ConnectionPool.from_url(

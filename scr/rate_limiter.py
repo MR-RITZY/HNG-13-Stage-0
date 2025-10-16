@@ -10,7 +10,7 @@ from scr.config import settings
 
 redis_url = (
     f"redis://{settings.REDIS_USERNAME}:{settings.REDIS_PASSWORD}@"
-    f"{settings.REDIS_HOST}:{settings.REDIS_PORT}/{settings.REDIS_DB}"
+    f"{settings.REDIS_HOST}:{settings.REDIS_PORT}"
 )
 
 limit_store = RedisStorage(uri=redis_url, connection_pool=pool)
