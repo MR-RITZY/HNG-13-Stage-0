@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     redis_username:str
     stack:str
     
-    model_config = SettingsConfigDict(env_file=".env")
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", env_ignore_empty=True)
 
 
-settings = Settings()
+settings = Settings(_env_file=None)
