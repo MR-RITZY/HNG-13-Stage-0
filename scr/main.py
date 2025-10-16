@@ -39,7 +39,7 @@ app.add_middleware(RateLimiter)
 async def get_me():
     async with AsyncClient() as client:
         try:
-            response = await client.get("https://catfact.ninja/fact")
+            response = await client.get(settings.CAT_FACT_URL)
             if response.status_code != 200:
                 info_logger.info(
                     f"Request Not Successful -- status: {response.status_code}"
@@ -51,9 +51,9 @@ async def get_me():
             return {
                 "status": "success",
                 "user": {
-                    "email": settings.email,
-                    "name": settings.name,
-                    "stack": settings.stack,
+                    "email": settings.EMAIL,
+                    "name": settings.NAME,
+                    "stack": settings.STACK,
                 },
                 "timestamp": datetime.now(tz=timezone.utc).isoformat(),
                 "fact": fact,

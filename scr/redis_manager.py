@@ -5,8 +5,8 @@ from scr.config import settings
 from scr.log import error_logger, info_logger
 
 redis_url = (
-    f"redis://{settings.redis_username}:{settings.redis_password}@"
-    f"{settings.redis_host}:{settings.redis_port}/{settings.redis_db}"
+    f"redis://{settings.REDIS_USERNAME}:{settings.REDIS_PASSWORD}@"
+    f"{settings.REDIS_HOST}:{settings.REDIS_PORT}/{settings.REDIS_DB}"
 )
 
 pool = ConnectionPool.from_url(
@@ -18,6 +18,7 @@ pool = ConnectionPool.from_url(
 )
 
 redis_client = Redis(connection_pool=pool)
+
 
 @asynccontextmanager
 async def get_redis():
@@ -32,5 +33,3 @@ async def get_redis():
         redis_client.close()
         redis_client.connection_pool.disconnect()
         info_logger("Disconnected from Redis")
-
-

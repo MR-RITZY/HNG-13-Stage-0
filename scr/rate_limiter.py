@@ -9,13 +9,14 @@ from scr.redis_manager import pool
 from scr.config import settings
 
 redis_url = (
-    f"redis://{settings.redis_username}:{settings.redis_password}@"
-    f"{settings.redis_host}:{settings.redis_port}/{settings.redis_db}"
+    f"redis://{settings.REDIS_USERNAME}:{settings.REDIS_PASSWORD}@"
+    f"{settings.REDIS_HOST}:{settings.REDIS_PORT}/{settings.REDIS_DB}"
 )
 
 limit_store = RedisStorage(uri=redis_url, connection_pool=pool)
 limit_strategy = SlidingWindowCounterRateLimiter(limit_store)
 rate_limit_item = RateLimitItemPerMinute(20)
+
 
 def get_ip(request: Request):
     return request.client.host
