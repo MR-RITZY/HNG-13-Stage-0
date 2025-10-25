@@ -5,8 +5,8 @@ from limits.aio.strategies import SlidingWindowCounterRateLimiter
 from limits import RateLimitItemPerMinute
 
 
-from scr.redis_manager import pool
-from scr.config import settings
+from src.redis_manager import pool
+from src.config import settings
 
 redis_url = (
     f"redis://{settings.REDIS_USERNAME}:{settings.REDIS_PASSWORD}@"

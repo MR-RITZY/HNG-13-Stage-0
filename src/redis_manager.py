@@ -1,8 +1,8 @@
 from coredis import Redis, ConnectionPool
 from contextlib import asynccontextmanager
 
-from scr.config import settings
-from scr.log import error_logger, info_logger
+from src.config import settings
+from src.log import error_logger, info_logger
 
 redis_url = (
     f"redis://{settings.REDIS_USERNAME}:{settings.REDIS_PASSWORD}@"

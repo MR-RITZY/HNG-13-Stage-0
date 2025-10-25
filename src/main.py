@@ -2,14 +2,14 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from httpx import AsyncClient
 from datetime import datetime, timezone
-from scr.rate_limiter import RateLimiter
+from src.rate_limiter import RateLimiter
 from contextlib import asynccontextmanager
 
 
-from scr.log import error_logger, info_logger
-from scr.config import settings
-from scr.schema import ResponseReturn
-from scr.redis_manager import get_redis
+from src.log import error_logger, info_logger
+from src.config import settings
+from src.schema import ResponseReturn
+from src.redis_manager import get_redis
 
 @asynccontextmanager
 async def lifespan(app:FastAPI):
